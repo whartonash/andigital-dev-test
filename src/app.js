@@ -1,10 +1,10 @@
-define([], function () {
+define(['views/main'], function (MainView) {
     'use strict';
-    
-    var app = [];
+
+    var app = {};
 
     app.start = function () {
-        console.log('hello world');
+        new MainView();
     };
 
     return app;

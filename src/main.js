@@ -1,22 +1,31 @@
 require.config({
-    baseUrl: '/',
+    baseUrl: '/src/',
+    map: {
+        '*': {
+            'text': '../../bower_components/text/text'
+        }
+    },
     paths: {
-        jquery: '/bower_components/jquery/dist/jquery.min.js',
-        backbone: '/bower_components/backbone/backbone-min.js',
-        underscore: '/bower_components/underscore/underscore-min.js',
-        app: '/src/app'
+        jquery: '../bower_components/jquery/dist/jquery.min',
+        backbone: '../bower_components/backbone/backbone-min',
+        underscore: '../bower_components/underscore/underscore-min',
+        app: 'app'
     },
     shim: {
         jquery: {
             exports: '$'
         },
         backbone: {
-            deps: ['underscore']
-        }
+            deps: ['underscore', 'jquery'],
+            exports: 'Backbone'
+        },
+        underscore: {
+            exports: '_'
+        },
     }
 });
 
-define(['app'], function (app) {
+define(['app', 'backbone'], function (app, Backbone) {
     'use strict';
     app.start();
 });
