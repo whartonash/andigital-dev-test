@@ -37,10 +37,15 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'gm
         },
         drawMap: function(){
             var geocode = this.collection.geocode,
-                center = new google.maps.LatLng(geocode.center.lat, geocode.center.lng);
+                suggestedBounds = this.collection.suggestedBounds,
+                center = new google.maps.LatLng(geocode.center.lat, geocode.center.lng),
+                southWest = new google.maps.LatLng(suggestedBounds.sw.lat, suggestedBounds.sw.lng),
+                northEast = new google.maps.LatLng(suggestedBounds.ne.lat, suggestedBounds.ne.lng),
+                bounds = new google.maps.LatLngBounds(southWest, northEast);
             
             // Draw map centred and bound by venue response info
-            this.map = new google.maps.Map(document.getElementById("map-canvas"), {center: center, scrollwheel: false, zoom: 12});
+            this.map = new google.maps.Map(document.getElementById("map-canvas"), {center: center, scrollwheel: false});
+            this.map.fitBounds(bounds);
         },
         search: _.debounce(function (e) {
             e.preventDefault();

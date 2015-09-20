@@ -33,7 +33,8 @@ define(['backbone', 'config', 'models/venue', 'helpers/query_helper'], function 
 
         parse: function (resp) {
             if (resp.meta.code == 200) {
-                // Load geocode info into collection
+                // Load geocode and suggested bounds info into collection
+                this.suggestedBounds = resp.response.suggestedBounds;
                 this.geocode = resp.response.geocode; 
 
                 // Create models for venues

@@ -9,6 +9,12 @@ body {
     color: #444;
 }
 
+@media (min-width: 768px){
+    body {
+        overflow: hidden;
+    }
+}
+
 a {
     color: #d93621;
     text-decoration: none;
@@ -63,33 +69,72 @@ hr {
 }
 
 #main {
-    margin-top: 70px;
+    margin-top: 66px;
     background-color: rgba(255,255,255,0.9);
     line-height: 40px;
     min-height: 350px;
-    padding: 20px 0px;
 }
 
 #footer {
     position: fixed;
-    height: 120px;
+    height: 36px;
     background-color: #1b1e24;
     text-align: center;
     bottom: 0;
     right: 0;
     left: 0;
     color: #8a8e99;
-    padding: 12px;
+    padding: 6px;
     font-size: 15px;
 }
 
+@media (max-width: 767px){
+    #footer { 
+        height: 94px;
+    }
+    #search-btn { 
+        width: 100%;
+    }
+    #footer p {
+        margin: 6px;
+    }
+    #main {
+        margin-top: 40px;
+        margin-bottom: 94px;
+        line-height: 30px;
+    }
+    #header {
+        height: 44px;
+    }
+    #header .logo {
+        margin-top: 12px;
+        height: 26px;
+        position: absolute;
+    }
+    #header .foursquare-logo {
+        width: 156px;
+        height: 26px;
+        margin-right: -10px;
+        margin-top: 10px;
+    }
+    .search {
+        margin-bottom: 14px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #map-canvas {
+        height: 564px;
+    }
+}
+
 #footer i {
-    padding: 10px;
-    font-size: 20px;
-    color: white;
+    font-size: 18px;
+    padding-top: 4px;
 }
 
 #footer a {
+    padding: 6px;
     color: inherit;
     text-decoration: none;
 }
