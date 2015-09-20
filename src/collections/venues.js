@@ -1,4 +1,4 @@
-define(['backbone', 'config', 'models/venue'], function (Backbone, config, Venue) {
+define(['backbone', 'config', 'models/venue', 'helpers/query_helper'], function (Backbone, config, Venue, QueryHelper) {
 
     'use strict';  
 
@@ -28,14 +28,7 @@ define(['backbone', 'config', 'models/venue'], function (Backbone, config, Venue
         },
 
         url: function() {
-            return config.foursquare.api + "/venues/explore?" 
-                + "client_id=" + this.defaults.client_id + "&"
-                + "client_secret=" + this.defaults.client_secret + "&"
-                + "radius=" + this.defaults.radius + "&"
-                + "lat=" + this.defaults.lat + "&"
-                + "lng=" + this.defaults.lng + "&"
-                + "v=" + this.defaults.v + "&"
-                + "locale=" + this.defaults.locale;
+            return config.foursquare.api + "/venues/explore?" + QueryHelper.objToQuerySting(this.options);
         },
 
         parse: function (resp) {
