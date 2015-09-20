@@ -65,4 +65,6 @@ gulp.task("watch",  ['serve'], function (){
 });
 
 
-gulp.task("default", ['bundle', 'serve', 'watch']);
+gulp.task("default", ['bundle', 'serve']);
+
+gulp.task("dev", ['bundle', 'serve', 'watch']);
