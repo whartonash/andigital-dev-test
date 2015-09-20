@@ -1,0 +1,14 @@
+<div class="marker-info">
+    <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <h3>
+                <% if (typeof url !== 'undefined') { %>
+                    <a href="<%= url %>" target="_blank"><%= name %></a></h2>
+                <% } else { %>
+                    <%= name %>
+                <% } %>
+            </h3>
+            <h4><%= categories[0].name %></h4>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'gmap'], function (Backbone, MainTemplate, ErrorTemplate, Google) {
+define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'text!templates/marker_info.html', 'gmap'], function (Backbone, MainTemplate, ErrorTemplate, MarkerInfoTemplate, Google) {
     'use strict';
     return Backbone.View.extend({
         tagName: 'div',
@@ -53,7 +53,9 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'gm
         placeMarker: function(model){
             var _this = this,
                 map = this.map,
-                venue = model.get('venue');
+                venue = model.get('venue'),
+                markerInfoTemplate = _.template(MarkerInfoTemplate),
+                infoContentString = markerInfoTemplate(venue);
 
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(venue.location.lat, venue.location.lng),
@@ -62,6 +64,14 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'gm
                 animation: google.maps.Animation.DROP,
                 draggable: false,
                 icon: venue.categories[0].icon.prefix + "bg_44" + venue.categories[0].icon.suffix
+            });
+
+            marker.addListener('click', function() {
+                var infowindow = new google.maps.InfoWindow({
+                    content: infoContentString,
+                    maxWidth: 250,
+                });
+                infowindow.open(map, marker);
             });
         },
         search: _.debounce(function (e) {
