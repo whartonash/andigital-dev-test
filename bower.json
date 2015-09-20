@@ -1,0 +1,25 @@
+{
+  "name": "andigital-dev-test",
+  "version": "0.0.0",
+  "homepage": "https://github.com/whartonash/andigital-dev-test",
+  "authors": [
+    "Ashley Wharton <wharton.ash@gmail.com>"
+  ],
+  "description": "Simple application integrating with Foursquare API, developed by Ashley Wharton for ANDigital developer test",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "bootstrap": "~3.3.5",
+    "requirejs-plugins": "~1.0.3",
+    "requirejs": "~2.1.20",
+    "text": "~2.0.14"
+  }
+}
