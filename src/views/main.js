@@ -1,4 +1,4 @@
-define(['backbone', 'text!templates/main.html', 'text!templates/error.html'], function (Backbone, MainTemplate, ErrorTemplate) {
+define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'gmap'], function (Backbone, MainTemplate, ErrorTemplate, Google) {
     'use strict';
     return Backbone.View.extend({
         tagName: 'div',
@@ -29,7 +29,18 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html'], fu
                 return false; 
             });
 
+            if (this.collection.models.length > 0) {
+                _this.drawMap();
+            }
+
             return this;
+        },
+        drawMap: function(){
+            var geocode = this.collection.geocode,
+                center = new google.maps.LatLng(geocode.center.lat, geocode.center.lng);
+            
+            // Draw map centred and bound by venue response info
+            this.map = new google.maps.Map(document.getElementById("map-canvas"), {center: center, scrollwheel: false, zoom: 12});
         },
         search: _.debounce(function (e) {
             e.preventDefault();

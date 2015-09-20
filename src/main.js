@@ -9,6 +9,8 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery.min',
         backbone: '../bower_components/backbone/backbone-min',
         underscore: '../bower_components/underscore/underscore-min',
+        async: '../bower_components/requirejs-plugins/src/async',
+        gmap: 'utils/googlemaps',
         app: 'app'
     },
     shim: {

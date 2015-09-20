@@ -20,10 +20,16 @@
         </div>
         <hr />
         <div class="row results">
-        <% if (geocode) { %> 
-            <div class="col-md-12">Recommended and popular venues around "<%= geocode.displayString %>"</div>
-            <div class="col-md-12">Count = <%= venues.length %></div>
-        <% } %>
+            <% if (geocode) { %> 
+                <div class="col-md-12">Recommended and popular venues around "<%= geocode.displayString %>"</div>
+                <% if (venues.length > 0) { %>
+                    <div id="map-canvas"></div>
+                <% } else { %>
+                    <div class="col-md-12">
+                        <p>Sorry, no results were found for that location</p>
+                    </div>
+                <% } %>
+            <% } %>
         </div>
     </div>
 </div>
