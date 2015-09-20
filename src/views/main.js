@@ -1,5 +1,7 @@
 define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'text!templates/marker_info.html', 'gmap'], function (Backbone, MainTemplate, ErrorTemplate, MarkerInfoTemplate, Google) {
+    
     'use strict';
+
     return Backbone.View.extend({
         tagName: 'div',
         el: '#content',
@@ -8,21 +10,20 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'te
             'click #search-btn': 'search'
         },
         initialize: function () {
-            this.collection.bind("replace reset add remove", _.debounce(this.render, 100), this);
+            this.infowindow = null;
+            this.collection.bind("replace reset add remove", _.debounce(this.render, 100), this); 
             this.render();
         },
         render: function () {
             var _this = this;
-            
+
             this.$el.html(this.template({
                 geocode: this.collection.geocode,
                 venues: this.collection.models
             }));
 
-            // Focus on the input field after render
             this.$el.find("#place").focus();
 
-            // Prevent form submitting and trigger this search handler
             this.$el.find("form").submit(function (e) { 
                 e.preventDefault();
                 _this.$el.find("#search-btn").click();
@@ -46,7 +47,7 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'te
             // Draw map centred and bound by venue response info
             this.map = new google.maps.Map(document.getElementById("map-canvas"), {center: center, scrollwheel: false});
             this.map.fitBounds(bounds);
-
+            
             // Place markers for venues
             this.collection.each(this.placeMarker, this);
         },
@@ -67,11 +68,16 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'te
             });
 
             marker.addListener('click', function() {
-                var infowindow = new google.maps.InfoWindow({
+                if (_this.infowindow) {
+                    _this.infowindow.close();
+                }
+
+                _this.infowindow = new google.maps.InfoWindow({
                     content: infoContentString,
                     maxWidth: 250,
                 });
-                infowindow.open(map, marker);
+
+                _this.infowindow.open(map, marker);
             });
         },
         search: _.debounce(function (e) {
@@ -93,4 +99,5 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'te
             });
         }, 1000, true)
     });
+
 });

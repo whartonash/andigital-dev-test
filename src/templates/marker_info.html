@@ -10,5 +10,25 @@
             </h3>
             <h4><%= categories[0].name %></h4>
         </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="rating text-center pull-right" style="background-color: #<%= ratingColor %>"><%= rating %></div>
+        </div>
+    </div>
+    <div class="row">
+        <% if (contact.phone) { %>
+            <div class="col-md-12">
+                <strong>Phone:</strong> <a href="tel:<%= contact.phone %>"><%= contact.formattedPhone %></a>
+            </div>
+        <% } %>
+        <div class="col-md-12">
+            <address>
+                <strong>Address:</strong><br>
+                <% _.each(location.formattedAddress, function (component) { %>
+                    <% if(component !== "United Kingdom"){ %>
+                        <%= component %><br>
+                    <% } %>
+                <% }) %>
+            </address>
+        </div>
     </div>
 </div>
