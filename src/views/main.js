@@ -46,6 +46,23 @@ define(['backbone', 'text!templates/main.html', 'text!templates/error.html', 'gm
             // Draw map centred and bound by venue response info
             this.map = new google.maps.Map(document.getElementById("map-canvas"), {center: center, scrollwheel: false});
             this.map.fitBounds(bounds);
+
+            // Place markers for venues
+            this.collection.each(this.placeMarker, this);
+        },
+        placeMarker: function(model){
+            var _this = this,
+                map = this.map,
+                venue = model.get('venue');
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(venue.location.lat, venue.location.lng),
+                map: map,
+                title: venue.name,
+                animation: google.maps.Animation.DROP,
+                draggable: false,
+                icon: venue.categories[0].icon.prefix + "bg_44" + venue.categories[0].icon.suffix
+            });
         },
         search: _.debounce(function (e) {
             e.preventDefault();
