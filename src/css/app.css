@@ -28,6 +28,11 @@ label {
     font-weight: normal;
 }
 
+hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
 #header {
     position: fixed;
     background: #d93621;
@@ -44,6 +49,13 @@ label {
     margin-top: 20px;
     height: 40px;
     position: absolute;
+}
+
+#header .foursquare-logo {
+    float: right;
+    height: 48px;
+    margin-top: 8px;
+    margin-right: -14px;
 }
 
 #main {
@@ -80,4 +92,16 @@ label {
 
 #footer a:hover {
     color: white;
+}
+
+#search-btn { 
+    margin-bottom: 2px;
+}
+
+.search {
+    padding-top: 8px;
+}
+
+.error {
+    line-height: 12px;
 }

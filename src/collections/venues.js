@@ -39,7 +39,13 @@ define(['backbone', 'config', 'models/venue'], function (Backbone, config, Venue
         },
 
         parse: function (resp) {
-            console.log(resp);
+            if (resp.meta.code == 200) {
+                // Load geocode info into collection
+                this.geocode = resp.response.geocode; 
+
+                // Create models for venues
+                return resp.response.groups[0].items;
+            }
             return false;
         }
 

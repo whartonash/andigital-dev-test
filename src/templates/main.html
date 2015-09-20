@@ -1,21 +1,29 @@
 <div id="header">
     <div class="container-fluid">
         <a href="https://andigital.com/"><img class="logo" src="https://static.andigital.com/logos/logo-transparent.png" alt="ANDigital"></a>
+        <a href="https://foursquare.com/"><img class="foursquare-logo" src="src/assets/foursquare.png" alt="Foursquare"></a>
     </div>
 </div>
 
 <div id="main">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row search">
             <div class="col-md-12">
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="place">Show me venues around... </label>
-                        <input type="text" class="form-control" id="place" placeholder="Enter place name">
+                        <input type="text" class="form-control" id="place" placeholder="e.g. London, UK" autofocus>
                     </div>
-                    <button type="submit" id="search" class="btn btn-default">Search</button>
+                    <button type="button" id="search-btn" class="btn btn-default">Search</button>
                 </form>
             </div>
+        </div>
+        <hr />
+        <div class="row results">
+        <% if (geocode) { %> 
+            <div class="col-md-12">Recommended and popular venues around "<%= geocode.displayString %>"</div>
+            <div class="col-md-12">Count = <%= venues.length %></div>
+        <% } %>
         </div>
     </div>
 </div>
