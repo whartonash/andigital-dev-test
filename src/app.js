@@ -1,10 +1,14 @@
-define(['views/main'], function (MainView) {
+define(['views/main', 'collections/venues'], function (MainView, Venues) {
     'use strict';
 
     var app = {};
 
     app.start = function () {
-        new MainView();
+        var venuesCollection = new Venues();
+
+        new MainView({
+            collection: venuesCollection
+        });
     };
 
     return app;

@@ -15,8 +15,16 @@ define(['backbone', 'text!templates/main.html'], function (Backbone, MainTemplat
         },
         search: function (e) {
             e.preventDefault();
-            var $placeField = this.$el.find('#place');
-            console.log($placeField.val());
+            var placeName = this.$el.find('#place').val(),
+                venues = this.collection;
+
+            // Use venues collection to search around place
+            venues.fetch({
+                data: {near: placeName},
+                error: function(collection, response, options) {
+                    console.log(response);
+                }
+            });
         }
     });
 });
