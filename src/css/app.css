@@ -9,12 +9,6 @@ body {
     color: #444;
 }
 
-@media (min-width: 768px){
-    body {
-        overflow: hidden;
-    }
-}
-
 a {
     color: #d93621;
     text-decoration: none;
@@ -56,7 +50,6 @@ hr {
     right: 0;
     left: 0;
     z-index: 100;
-    margin-bottom: 30px;
 }
 
 #header .logo {
@@ -73,10 +66,11 @@ hr {
 }
 
 #main {
-    margin-top: 66px;
+    padding-top: 62px;
     background-color: rgba(255,255,255,0.9);
     line-height: 40px;
     min-height: 350px;
+    padding-bottom: 36px;
 }
 
 #footer {
@@ -93,20 +87,6 @@ hr {
 }
 
 @media (max-width: 767px){
-    #footer { 
-        height: 94px;
-    }
-    #search-btn { 
-        width: 100%;
-    }
-    #footer p {
-        margin: 6px;
-    }
-    #main {
-        margin-top: 40px;
-        margin-bottom: 94px;
-        line-height: 30px;
-    }
     #header {
         height: 44px;
     }
@@ -121,14 +101,28 @@ hr {
         margin-right: -10px;
         margin-top: 10px;
     }
+    #main {
+        padding-top: 44px;
+        padding-bottom: 94px;
+        line-height: 30px;
+    }
+    #footer { 
+        height: 94px;
+    }
+    #footer p {
+        margin: 6px;
+    }
+    #search-btn { 
+        width: 100%;
+    }
     .search {
         margin-bottom: 14px;
     }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
     #map-canvas {
-        height: 564px;
+        height: 568px !important;
     }
 }
 
@@ -153,7 +147,7 @@ hr {
 
 #map-canvas {
     width: 100%;
-    height: 534px;
+    height: 540px;
     margin-top: 2px;
 }
 
