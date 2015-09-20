@@ -33,8 +33,6 @@ Navigate to http://localhost:3000/
 
 
 ## Credit
-Branding of the app has been adapted from the ANDigital website
-https://andigital.com/
+Branding of the app has been adapted from the ANDigital website - https://andigital.com/
 
-The app makes use of the Foursquare venues API
-https://developer.foursquare.com/
+The app makes use of the Foursquare venues API - https://developer.foursquare.com/
